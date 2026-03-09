@@ -1,0 +1,158 @@
+\ProvidesPackage{mynudt}[2024/01/01 用户自定义宏包 — 算法/代码/数学/环境]
+%%
+%% mynudt.sty — 论文中用户专用的宏包加载与自定义命令
+%%
+%% 说明: nudtpaper.cls 已加载的宏包此处不再重复加载，包括:
+%%   amsmath, amssymb, bm, graphicx, xcolor, booktabs, multirow,
+%%   tabularx, longtable, array, float, hyperref, enumitem 等。
+%%
+%% 文件结构:
+%%   §1 算法与代码环境
+%%   §2 数学快捷命令
+%%   §3 标注与辅助命令
+%%   §4 着色框环境
+%%   §5 表格扩展
+%%   §6 符号列表 (nomencl)
+%%
+
+%% ===========================================================================
+%% §1 算法与代码环境
+%% ===========================================================================
+
+%% ---- 算法 ----
+\RequirePackage[chapter]{algorithm}
+\RequirePackage{algorithmic}
+\algsetup{indent=3em}
+\floatname{algorithm}{算法}
+\renewcommand{\algorithmicrequire}{\textbf{已知:}}
+\renewcommand{\algorithmicensure}{\textbf{求:\quad}}
+\renewcommand{\algorithmiccomment}[1]{\hfill$\rhd$ #1}
+
+%% ---- 代码列表 (listings) ----
+\RequirePackage{cases,listings}
+\lstset{
+  columns=flexible, sensitive=true, lineskip=-3pt,
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{blue}\bfseries,
+  stringstyle=\ttfamily,
+  commentstyle=\color{red!50!green!50!blue!50},
+  numbers=left, numberstyle=\tiny,
+  xleftmargin=0.5em, xrightmargin=0.5em, aboveskip=0.5em,
+  showstringspaces=false, breaklines=true,
+  extendedchars=true, escapeinside=``,
+  frame=shadowbox,
+  rulesepcolor=\color{red!20!green!20!blue!20},
+}
+
+%% ---- Verbatim 代码框 ----
+\RequirePackage{fancyvrb}
+\DefineVerbatimEnvironment{code}{Verbatim}{%
+  frame=lines, framerule=0.5mm, rulecolor=\color{black},
+  fontseries=tt, xleftmargin=4mm, numbers=left, numbersep=1.5mm,
+}
+
+%% ===========================================================================
+%% §2 数学快捷命令
+%% ===========================================================================
+
+\newcommand{\ve}[1]{\ensuremath{\mathbf{#1}}}           % 向量（粗体）
+\newcommand{\bhat}[1]{\ensuremath{\mathbf{\hat{#1}}}}   % 带帽向量
+\newcommand{\expect}[1]{\ensuremath{\langle #1\rangle}}  % 期望 / 尖括号
+\newcommand{\abs}[1]{\ensuremath{\vert #1\vert}}         % 绝对值
+\newcommand{\norm}[1]{\ensuremath{\Vert #1\Vert}}        % 范数
+\newcommand{\rd}{\ensuremath{\mathrm{d}}}                % 微分算子 d
+\newcommand{\diag}{\ensuremath{\mathrm{diag}}}           % diag 算子
+\newcommand{\SI}[2]{\ensuremath{\mathrm{#1}^{#2}}}      % 简易单位
+
+%% ===========================================================================
+%% §3 标注与辅助命令
+%% ===========================================================================
+
+\newcommand{\fcite}[1]{[{\bfseries #1}]}                 % 手动加粗引用标号
+\newcommand{\rcite}{[{\bfseries\textcolor{red}{R}}]}     % 红色待补引用
+\newcommand{\wmark}{{\color{red}$\square$}}              % 红色方块标记
+\newcommand{\lby}[1]{{\color{red}\kai #1}}               % 红色楷体批注
+\newcommand{\done}{{\color{red}\bfseries\ensuremath{\checkmark}}} % 完成标记
+\newcommand{\mynudt}{我的导言}                             % 示例占位命令
+
+%% ===========================================================================
+%% §4 着色框环境
+%% ===========================================================================
+
+\definecolor{shadecolor}{gray}{.85}
+\definecolor{tintedcolor}{gray}{.90}
+\RequirePackage{framed}
+
+%% 灰色底纹框
+\newenvironment{svgraybox}{%
+  \fboxsep=12pt\relax
+  \begin{shaded}%
+    \list{}{\leftmargin=12pt \rightmargin=2\leftmargin
+            \leftmargin=\z@ \topsep=\z@\relax}%
+    \expandafter\item\parindent=0pt
+    \hskip-\listparindent
+}{%
+    \endlist
+  \end{shaded}%
+}
+
+%% 浅灰色底纹框
+\newenvironment{tinted}{%
+  \def\FrameCommand{\colorbox{tintedcolor}}%
+  \MakeFramed{\FrameRestore}%
+}{\endMakeFramed}
+
+\newenvironment{svtintedbox}{%
+  \fboxsep=6pt\relax
+  \begin{tinted}%
+    \list{}{\leftmargin=0pt \rightmargin=2\leftmargin
+            \leftmargin=\z@ \topsep=\z@\relax}%
+    \expandafter\item\parindent=0pt\relax
+}{%
+    \endlist
+  \end{tinted}%
+}
+
+%% ===========================================================================
+%% §5 表格扩展
+%% ===========================================================================
+
+%% 居中自动宽度列 (用于 tabularx)
+\newcolumntype{Z}{>{\centering\arraybackslash}X}
+
+%% ===========================================================================
+%% §6 符号列表 (nomencl)
+%% ===========================================================================
+
+\RequirePackage[intoc,norefeq,refpage]{nomencl}
+\renewcommand{\nomname}{重要符号表}
+\renewcommand{\nomgroup}[1]{}%
+
+%% 定制 nomencl 条目格式
+\def\pagedeclaration#1{\nobreakspace#1}%
+\def\@@nomenclature[#1]#2#3#4{\endgroup\@esphack}
+\def\@@@nomenclature[#1]#2#3#4{%
+  \def\@tempa{#2}\def\@tempb{#3}%
+  \protected@write\@nomenclaturefile{}%
+    {\string\nomenclatureentry{#1\nom@verb\@tempa @{\nom@verb\@tempa}&%
+        \begingroup\nom@verb\@tempb\endgroup &\begingroup#4\endgroup&%
+        \begingroup\protect%
+          |nompageref}{\thepage}}%
+  \endgroup\@esphack}
+
+%% 定制 nomencl 表格布局
+\def\thenomenclature{%
+  \@ifundefined{chapter}%
+    {\section*{\nomname}%
+     \if@intoc\addcontentsline{toc}{section}{\nomname}\fi}%
+    {\chapter*{\nomname}%
+     \if@intoc\addcontentsline{toc}{chapter}{\nomname}\fi}%
+  \nompreamble
+  \begin{longtable}[c]{@{}lp{23em}ll@{}}%
+    {\hei 符~号} & {\hei 定~义} & {\hei 单~位} & {\hei 页~码} \\
+}
+\def\endthenomenclature{%
+  \end{longtable}%
+  \nompostamble}
+
+\endinput

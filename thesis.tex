@@ -1,0 +1,97 @@
+% !TeX document-id = {366336a2-46d7-4340-b895-e90e69fc13ad}
+%!TEX program = xelatex
+%!BIB program = biber
+%%
+%% thesis.tex — 国防科技大学学位论文主文件
+%%
+%% 基于 nudtpaper.cls v3.0 (2026)
+%% 可选 documentclass 参数:
+%%   学位:   master | doctor
+%%   排版:   twoside（博士默认双面）
+%%   字体:   ttf | otf | fz | fandol
+%%   参考文献: biber（使用 biblatex）; 不写则使用 natbib+bibtex
+%%   简历引用: resumebib（用 biblatex 生成简历中的文献列表）
+%%   盲审:   anon（隐去作者、导师等个人信息）
+%%
+\documentclass[doctor,twoside,biber,resumebib,ttf]{nudtpaper}
+
+%% ===========================================================================
+%% 参考文献数据库
+%% ===========================================================================
+\addbibresource[location=local]{ref/refs.bib}
+
+%% ===========================================================================
+%% 用户自定义宏包与命令（算法、代码、数学快捷命令等）
+%% ===========================================================================
+\usepackage{mynudt}
+
+%% ===========================================================================
+%% 论文元数据
+%% ===========================================================================
+\classification{TPxxx}
+\serialno{000000}
+\confidentiality{公开}
+\UDC{}
+\title{论文中文题目}
+\displaytitle{论文中文题目（无换行）}
+\author{作者姓名}
+\zhdate{\zhtoday}
+\entitle{Title of Dissertation in English}
+\enauthor{Name of Author}
+\endate{\entoday}
+\subject{学科专业名称}
+\ensubject{Name of Discipline}
+\researchfield{研究方向}
+\supervisor{导师姓名\quad{}职称}
+\cosupervisor{副导师姓名\quad{}职称}
+\ensupervisor{Prof.~Supervisor Name}
+\encosupervisor{Assoc. Prof.~Co-supervisor Name}
+\papertype{工学}
+\enpapertype{Engineering}
+
+%% ===========================================================================
+%% 正文开始
+%% ===========================================================================
+\begin{document}
+\graphicspath{{figures/}}
+
+%% ---- 封面、目录、图表索引 ----
+\maketitle
+\frontmatter
+\tableofcontents
+\listoftables
+\listoffigures
+
+%% ---- 摘要与符号表 ----
+\newif\ifreview\reviewfalse%
+\midmatter% 去掉行尾空格以消除 chktex 警告
+\input{chapters/abstract}
+\input{chapters/denotation}
+%% 若改用 nomencl 生成符号列表，注释上面一行，取消下面两行注释:
+% \cleardoublepage
+% \printnomenclature
+
+%% ---- 正文章节 ----
+\mainmatter%
+\input{chapters/chap01/chap01.tex}
+\input{chapters/chap02/chap02.tex}
+\input{chapters/chap03/chap03.tex}
+\input{chapters/chap04/chap04.tex}
+\input{chapters/chap05/chap05.tex}
+\input{chapters/chap06/chap06.tex}
+
+%% ---- 致谢 ----
+\backmatter%
+\input{chapters/ack}
+
+%% ---- 参考文献 ----
+\printbibliography[heading=bibintoc,title={参考文献}]
+
+%% ---- 附录 ----
+\appendix%
+\input{chapters/appendix01}
+
+%% ---- 简历 ----
+\input{chapters/resume}
+
+\end{document}

@@ -1,0 +1,40 @@
+# === LaTeX 编译产物 ===
+build/
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.thm
+*.xdv
+*.nav
+*.snm
+*.vrb
+*.nls
+*.nlo
+*.idx
+*.ilg
+*.ind
+*.glo
+*.gls
+*.brf
+
+# === 操作系统 ===
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# === 编辑器 ===
+*.swp
+*~
+*.bak
+.vscode/
+.idea/
