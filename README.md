@@ -325,7 +325,3 @@ $env:TEXINPUTS=".\cls//;$env:TEXINPUTS"
 ## 📄 许可证
 
 本项目基于 LaTeX Project Public License 发布。
-
-</div>
-#   n u d t _ t h e s i s _ t e m p l a t e  
- 
