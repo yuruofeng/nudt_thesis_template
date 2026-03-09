@@ -1,5 +1,6 @@
 # === LaTeX 编译产物 ===
 build/
+*.pdf
 *.aux
 *.bbl
 *.bcf
