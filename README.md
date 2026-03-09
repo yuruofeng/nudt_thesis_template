@@ -54,8 +54,8 @@
 ### 1️⃣ 克隆项目
 
 ```bash
-git clone https://github.com/your-username/Doctoral-Thesis-Paper.git
-cd Doctoral-Thesis-Paper
+git clone https://github.com/yuruofeng/nudt_thesis_template.git
+cd nudt_thesis_template
 ```
 
 ### 2️⃣ 编译论文
@@ -92,7 +92,7 @@ rm -f *.aux *.log *.toc *.out *.bbl *.blg *.bcf *.run.xml
 ## 📁 项目结构
 
 ```
-Doctoral-Thesis-Paper/
+nudt_thesis_template/
 ├── 📄 thesis.tex              # 主文件（唯一入口）
 ├── 📄 build.bat               # Windows 编译脚本
 ├── 📄 README.md               # 项目说明文档
