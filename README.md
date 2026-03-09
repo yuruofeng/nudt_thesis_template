@@ -4,6 +4,8 @@
 
 **适用于硕士、博士学位论文的标准化排版模板**
 
+> 📌 本项目是基于 [liubenyuan/nudtpaper](https://github.com/liubenyuan/nudtpaper) 的派生版本
+
 [![License: LPPL 1.3c](https://img.shields.io/badge/License-LPPL%201.3c-blue.svg)](https://www.latex-project.org/lppl.txt)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://www.latex-project.org/)
 
@@ -324,6 +326,8 @@ $env:TEXINPUTS=".\cls//;$env:TEXINPUTS"
 
 ## 📄 许可证
 
-本项目基于 [LaTeX Project Public License (LPPL) 1.3c](LICENSE) 发布。
+本项目是基于 [liubenyuan/nudtpaper](https://github.com/liubenyuan/nudtpaper)（原作者：Liu Benyuan）的派生版本。
+
+核心模板文件 (nudtpaper.cls, nudtpaper.cfg 等) 遵循 [LaTeX Project Public License (LPPL) 1.3c](LICENSE) 发布。
 
 [![License: LPPL 1.3c](https://img.shields.io/badge/License-LPPL%201.3c-blue.svg)](https://www.latex-project.org/lppl.txt)

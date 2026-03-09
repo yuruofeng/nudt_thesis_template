@@ -1,3 +1,16 @@
+NUDT Thesis Template - 国防科技大学学位论文 LaTeX 模板
+==========================================================
+
+本项目是基于 Liu Benyuan 的 nudtpaper 模板的派生版本。
+
+原项目地址: https://github.com/liubenyuan/nudtpaper
+原作者: Liu Benyuan <liubenyuan@gmail.com>
+
+本模板的核心文件 (nudtpaper.cls, nudtpaper.cfg 等) 来源于原项目，
+并继续遵循 LaTeX Project Public License 许可证发布。
+
+---
+
 The LaTeX Project Public License
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
